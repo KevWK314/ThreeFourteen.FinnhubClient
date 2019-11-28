@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29424.173
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThreeFourteen.FinnhubClient", "src\ThreeFourteen.FinnhubClient\ThreeFourteen.FinnhubClient.csproj", "{8ED0E400-6660-4C15-AC97-8503426C178E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThreeFourteen.FinnhubClient.Runner", "src\ThreeFourteen.FinnhubClient.Runner\ThreeFourteen.FinnhubClient.Runner.csproj", "{D1EE1981-4804-414B-837E-86B61AE1AD69}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8ED0E400-6660-4C15-AC97-8503426C178E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8ED0E400-6660-4C15-AC97-8503426C178E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8ED0E400-6660-4C15-AC97-8503426C178E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8ED0E400-6660-4C15-AC97-8503426C178E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1EE1981-4804-414B-837E-86B61AE1AD69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1EE1981-4804-414B-837E-86B61AE1AD69}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1EE1981-4804-414B-837E-86B61AE1AD69}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1EE1981-4804-414B-837E-86B61AE1AD69}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8D4D7226-E6FB-4748-A26F-B6E4635A01FC}
+	EndGlobalSection
+EndGlobal
