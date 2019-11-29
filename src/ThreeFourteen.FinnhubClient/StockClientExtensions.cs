@@ -55,7 +55,7 @@ namespace ThreeFourteen.FinnhubClient
                 new Field(FieldKeys.Symbol, symbol));
         }
 
-        public static async Task<Candle[]> GetCandleData(this StockClient client, string symbol)
+        public static async Task<Candle[]> GetCandles(this StockClient client, string symbol)
         {
             if (string.IsNullOrWhiteSpace(symbol)) throw new ArgumentException(nameof(symbol));
 

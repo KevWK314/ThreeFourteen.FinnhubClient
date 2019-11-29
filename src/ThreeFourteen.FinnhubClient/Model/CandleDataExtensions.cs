@@ -32,7 +32,7 @@ namespace ThreeFourteen.FinnhubClient.Model
                     Low = candleData.Low[i],
                     Open = candleData.Open[i],
                     Close = candleData.Close[i],
-                    Volume = candleData.Volume[i],
+                    Volume = candleData.Volume?[i] ?? 0,
                     Timestamp = DateTimeOffset.FromUnixTimeSeconds(candleData.Timestamp[i]).UtcDateTime
                 };
             }
