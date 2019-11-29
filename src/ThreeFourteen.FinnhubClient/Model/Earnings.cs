@@ -12,7 +12,7 @@ namespace ThreeFourteen.FinnhubClient.Model
         public double Estimate { get; set; }
 
         [JsonProperty("period")]
-        public DateTimeOffset Period { get; set; }
+        public DateTime Period { get; set; }
 
         [JsonProperty("symbol")]
         public string Symbol { get; set; }

@@ -54,5 +54,17 @@ namespace ThreeFourteen.FinnhubClient
             return client.FinnhubClient.SendAsync<Earnings[]>("stock/earnings", JsonDeserialiser.Default,
                 new Field(FieldKeys.Symbol, symbol));
         }
+
+        public static async Task<Candle[]> GetCandleData(this StockClient client, string symbol)
+        {
+            if (string.IsNullOrWhiteSpace(symbol)) throw new ArgumentException(nameof(symbol));
+
+            var data = await client.FinnhubClient.SendAsync<CandleData>("stock/candle", JsonDeserialiser.Default,
+                new Field(FieldKeys.Symbol, symbol),
+                new Field(FieldKeys.Resolution, "D"),
+                new Field("count", "10"));
+
+            return data.Map();
+        }
     }
 }

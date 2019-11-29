@@ -17,30 +17,30 @@ namespace ThreeFourteen.FinnhubClient.Model
         public string Location { get; set; }
 
         [JsonProperty("salary")]
-        public long Salary { get; set; }
+        public int Salary { get; set; }
 
         [JsonProperty("bonus")]
-        public long Bonus { get; set; }
+        public int Bonus { get; set; }
 
         [JsonProperty("stockAwards")]
-        public long StockAwards { get; set; }
+        public int StockAwards { get; set; }
 
         [JsonProperty("optionAwards")]
-        public long OptionAwards { get; set; }
+        public int OptionAwards { get; set; }
 
         [JsonProperty("nonEquityIncentives")]
         public long NonEquityIncentives { get; set; }
 
         [JsonProperty("pensionAndDeferred")]
-        public long PensionAndDeferred { get; set; }
+        public int PensionAndDeferred { get; set; }
 
         [JsonProperty("otherComp")]
-        public long OtherComp { get; set; }
+        public int OtherComp { get; set; }
 
         [JsonProperty("total")]
-        public long Total { get; set; }
+        public int Total { get; set; }
 
         [JsonProperty("year")]
-        public long Year { get; set; }
+        public string Year { get; set; }
     }
 }
