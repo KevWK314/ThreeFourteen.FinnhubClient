@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -43,7 +42,7 @@ namespace ThreeFourteen.FinnhubClient.Runner
             var earnings = await client.Stock.GetEarnings("AAPL");
             Console.WriteLine($"Success: Retrieved {earnings.Length} earnings entries.");
 
-            var candles = await client.Stock.GetCandles("AAPL");
+            var candles = await client.Stock.GetCandles("AAPL", Model.Resolution.Day, 10);
             Console.WriteLine($"Success: Retrieved {candles.Length} candles.");
         }
 
@@ -58,7 +57,7 @@ namespace ThreeFourteen.FinnhubClient.Runner
             var symbols = await client.Forex.GetSymbols("fxcm");
             Console.WriteLine($"Success: Forex exchange has {symbols.Length} symbols.");
 
-            var candles = await client.Forex.GetCandles(symbols.First().CandleSymbol);
+            var candles = await client.Forex.GetCandles(symbols.First().CandleSymbol, Model.Resolution.Day, 10);
             Console.WriteLine($"Success: Retrieved {candles.Length} candles.");
         }
 
@@ -73,7 +72,7 @@ namespace ThreeFourteen.FinnhubClient.Runner
             var symbols = await client.Crypto.GetSymbols("fxcm");
             Console.WriteLine($"Success: Crypto exchange has {symbols.Length} symbols.");
 
-            var candles = await client.Crypto.GetCandles(symbols.First().CandleSymbol);
+            var candles = await client.Crypto.GetCandles(symbols.First().CandleSymbol, Model.Resolution.Day, 10);
             Console.WriteLine($"Success: Retrieved {candles.Length} candles.");
         }
     }

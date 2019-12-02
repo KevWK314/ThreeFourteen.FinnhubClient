@@ -18,14 +18,32 @@ namespace ThreeFourteen.FinnhubClient
                 new Field("exchange", exchange));
         }
 
-        public static async Task<Candle[]> GetCandles(this ForexClient client, string symbol)
+        public static async Task<Candle[]> GetCandles(this ForexClient client, string symbol, Resolution resolution, int count)
         {
             if (string.IsNullOrWhiteSpace(symbol)) throw new ArgumentException(nameof(symbol));
 
             var data = await client.FinnhubClient.SendAsync<CandleData>("forex/candle", JsonDeserialiser.Default,
                 new Field(FieldKeys.Symbol, symbol),
-                new Field(FieldKeys.Resolution, "D"),
-                new Field("count", "10"));
+                new Field(FieldKeys.Resolution, resolution.GetFieldValue()),
+                new Field(FieldKeys.Count, count.ToString()));
+
+            return data.Map();
+        }
+
+        public static Task<Candle[]> GetCandles(this ForexClient client, string symbol, Resolution resolution, DateTime from)
+        {
+            return GetCandles(client, symbol, resolution, from, DateTime.UtcNow);
+        }
+
+        public static async Task<Candle[]> GetCandles(this ForexClient client, string symbol, Resolution resolution, DateTime from, DateTime to)
+        {
+            if (string.IsNullOrWhiteSpace(symbol)) throw new ArgumentException(nameof(symbol));
+
+            var data = await client.FinnhubClient.SendAsync<CandleData>("forex/candle", JsonDeserialiser.Default,
+                new Field(FieldKeys.Symbol, symbol),
+                new Field(FieldKeys.Resolution, resolution.GetFieldValue()),
+                new Field(FieldKeys.From, new DateTimeOffset(from).ToUnixTimeSeconds().ToString()),
+                new Field(FieldKeys.To, new DateTimeOffset(to).ToUnixTimeSeconds().ToString()));
 
             return data.Map();
         }
