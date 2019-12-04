@@ -1,0 +1,12 @@
+﻿namespace ThreeFourteen.Finnhub.Client
+{
+    public class ForexClient
+    {
+        public ForexClient(FinnhubClient finnhubClient)
+        {
+            FinnhubClient = finnhubClient;
+        }
+
+        internal FinnhubClient FinnhubClient { get; }
+    }
+}

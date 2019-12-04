@@ -1,0 +1,20 @@
+{
+  "address": "One Apple Park Way",
+  "city": "Cupertino",
+  "country": "USA",
+  "currency": "USD",
+  "cusip": "037833100",
+  "description": "Apple Inc. designs, manufactures, and markets mobile communication and media devices, and personal computers. It also sells various related software, services, accessories, and third-party digital content and applications.",
+  "exchange": "NASDAQ-NMS Stock Market",
+  "ggroup": "Technology Hardware \u0026 Equipment",
+  "gind": "Technology Hardware, Storage \u0026 Peripherals",
+  "gsector": "Information Technology",
+  "gsubind": "Technology Hardware, Storage \u0026 Peripherals",
+  "isin": "",
+  "naics": "Radio and Television Broadcasting and Wireless Communications Equipment Manufacturing",
+  "name": "APPLE INC",
+  "phone": "408-996-1010",
+  "state": "CA",
+  "ticker": "AAPL",
+  "weburl": "www.apple.com"
+}

@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+
+    <packageId>ThreeFourteen.Finnhub.Client</packageId>
+    <description>Implementation of the Finnhub API</description>
+    <title>Finnhub Client</title>
+    <authors>Kevin Kavanagh</authors>
+    <packageLicenseUrl>https://www.apache.org/licenses/LICENSE-2.0</packageLicenseUrl>
+    <packageProjectUrl>https://github.com/KevWK314/ThreeFourteen.FluentHttpClient</packageProjectUrl>
+    <packageRequireLicenseAcceptance>false</packageRequireLicenseAcceptance>
+    <packageTags>finnhub marketdata finance</packageTags>
+    <packageIconUrl>https://avatars1.githubusercontent.com/u/1942263</packageIconUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+  </ItemGroup>
+
+</Project>
