@@ -21,7 +21,8 @@ namespace ThreeFourteen.Finnhub.Client.Tests
             company.Should().NotBeNull();
             company.Address.Should().Be("One Apple Park Way");
 
-            httpClientTester.RequestMessage.RequestUri.AbsoluteUri.Should().Be("");
+            httpClientTester.RequestMessage.RequestUri
+                .AbsoluteUri.Should().Be("https://finnhub.io/api/v1/stock/profile?token=APIKey&symbol=AAPL");
         }
     }
 }
