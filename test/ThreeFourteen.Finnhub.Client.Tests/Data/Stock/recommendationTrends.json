@@ -1,0 +1,38 @@
+[
+  {
+    "buy": 21,
+    "hold": 6,
+    "period": "Sep 2019",
+    "sell": 0,
+    "strongBuy": 11,
+    "strongSell": 0,
+    "symbol": "AAPL"
+  },
+  {
+    "buy": 10,
+    "hold": 18,
+    "period": "Aug 2019",
+    "sell": 3,
+    "strongBuy": 13,
+    "strongSell": 0,
+    "symbol": "AAPL"
+  },
+  {
+    "buy": 9,
+    "hold": 20,
+    "period": "Jul 2019",
+    "sell": 2,
+    "strongBuy": 13,
+    "strongSell": 0,
+    "symbol": "AAPL"
+  },
+  {
+    "buy": 7,
+    "hold": 19,
+    "period": "Jun 2019",
+    "sell": 2,
+    "strongBuy": 13,
+    "strongSell": 0,
+    "symbol": "AAPL"
+  }
+]

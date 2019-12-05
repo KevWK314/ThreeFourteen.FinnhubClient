@@ -7,16 +7,16 @@ namespace ThreeFourteen.Finnhub.Client.Model
     public class CandleData
     {
         [JsonProperty("c")]
-        public List<double> Close { get; set; }
+        public List<decimal> Close { get; set; }
 
         [JsonProperty("h")]
-        public List<double> High { get; set; }
+        public List<decimal> High { get; set; }
 
         [JsonProperty("l")]
-        public List<double> Low { get; set; }
+        public List<decimal> Low { get; set; }
 
         [JsonProperty("o")]
-        public List<double> Open { get; set; }
+        public List<decimal> Open { get; set; }
 
         [JsonProperty("s")]
         public string Status { get; set; }
@@ -25,6 +25,6 @@ namespace ThreeFourteen.Finnhub.Client.Model
         public List<long> Timestamp { get; set; }
 
         [JsonProperty("v")]
-        public List<int> Volume { get; set; }
+        public List<long> Volume { get; set; }
     }
 }

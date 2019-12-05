@@ -1,0 +1,26 @@
+[
+  {
+    "actual": 2.46,
+    "estimate": 2.36,
+    "period": "2019-03-31",
+    "symbol": "AAPL"
+  },
+  {
+    "actual": 4.18,
+    "estimate": 4.17,
+    "period": "2018-12-31",
+    "symbol": "AAPL"
+  },
+  {
+    "actual": 2.91,
+    "estimate": 2.78,
+    "period": "2018-09-30",
+    "symbol": "AAPL"
+  },
+  {
+    "actual": 2.34,
+    "estimate": 2.18,
+    "period": "2018-06-30",
+    "symbol": "AAPL"
+  }
+]
