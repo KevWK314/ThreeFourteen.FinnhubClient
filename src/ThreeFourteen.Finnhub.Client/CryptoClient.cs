@@ -1,12 +1,58 @@
-﻿namespace ThreeFourteen.Finnhub.Client
+﻿using System;
+using System.Threading.Tasks;
+using ThreeFourteen.Finnhub.Client.Model;
+using ThreeFourteen.Finnhub.Client.Serialisation;
+
+namespace ThreeFourteen.Finnhub.Client
 {
     public class CryptoClient
     {
+        private readonly FinnhubClient _finnhubClient;
+
         public CryptoClient(FinnhubClient finnhubClient)
         {
-            FinnhubClient = finnhubClient;
+            _finnhubClient = finnhubClient;
         }
 
-        internal FinnhubClient FinnhubClient { get; }
+        public Task<string[]> GetExchanges()
+        {
+            return _finnhubClient.SendAsync<string[]>("crypto/exchange", JsonDeserialiser.Default);
+        }
+
+        public Task<Symbol[]> GetSymbols(string exchange)
+        {
+            return _finnhubClient.SendAsync<Symbol[]>("crypto/symbol", JsonDeserialiser.Default,
+                new Field("exchange", exchange));
+        }
+
+        public async Task<Candle[]> GetCandles(string symbol, Resolution resolution, int count)
+        {
+            if (string.IsNullOrWhiteSpace(symbol)) throw new ArgumentException(nameof(symbol));
+
+            var data = await _finnhubClient.SendAsync<CandleData>("crypto/candle", JsonDeserialiser.Default,
+                new Field(FieldKeys.Symbol, symbol),
+                new Field(FieldKeys.Resolution, resolution.GetFieldValue()),
+                new Field(FieldKeys.Count, count.ToString()));
+
+            return data.Map();
+        }
+
+        public Task<Candle[]> GetCandles(string symbol, Resolution resolution, DateTime from)
+        {
+            return GetCandles(symbol, resolution, from, DateTime.UtcNow);
+        }
+
+        public async Task<Candle[]> GetCandles(string symbol, Resolution resolution, DateTime from, DateTime to)
+        {
+            if (string.IsNullOrWhiteSpace(symbol)) throw new ArgumentException(nameof(symbol));
+
+            var data = await _finnhubClient.SendAsync<CandleData>("crypto/candle", JsonDeserialiser.Default,
+                new Field(FieldKeys.Symbol, symbol),
+                new Field(FieldKeys.Resolution, resolution.GetFieldValue()),
+                new Field(FieldKeys.From, new DateTimeOffset(from).ToUnixTimeSeconds().ToString()),
+                new Field(FieldKeys.To, new DateTimeOffset(to).ToUnixTimeSeconds().ToString()));
+
+            return data.Map();
+        }
     }
 }
