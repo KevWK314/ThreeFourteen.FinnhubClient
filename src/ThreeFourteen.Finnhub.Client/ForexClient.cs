@@ -9,7 +9,7 @@ namespace ThreeFourteen.Finnhub.Client
     {
         private readonly FinnhubClient _finnhubClient;
 
-        public ForexClient(FinnhubClient finnhubClient)
+        internal ForexClient(FinnhubClient finnhubClient)
         {
             _finnhubClient = finnhubClient;
         }

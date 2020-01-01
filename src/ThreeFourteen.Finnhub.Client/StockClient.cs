@@ -9,7 +9,7 @@ namespace ThreeFourteen.Finnhub.Client
     {
         private readonly FinnhubClient _finnhubClient;
 
-        public StockClient(FinnhubClient finnhubClient)
+        internal StockClient(FinnhubClient finnhubClient)
         {
             _finnhubClient = finnhubClient;
         }

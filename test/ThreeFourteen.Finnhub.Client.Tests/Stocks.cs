@@ -115,7 +115,7 @@ namespace ThreeFourteen.Finnhub.Client.Tests
         }
 
         [Fact]
-        public async Task Cancles_WithCount()
+        public async Task Candles_WithCount()
         {
             var httpClientTester = new HttpClientTester()
                 .SetResponseContent(DataLoader.LoadStock("candle"));
@@ -133,7 +133,7 @@ namespace ThreeFourteen.Finnhub.Client.Tests
         }
 
         [Fact]
-        public async Task Cancles_WithRange()
+        public async Task Candles_WithRange()
         {
             var httpClientTester = new HttpClientTester()
                 .SetResponseContent(DataLoader.LoadStock("candle"));
