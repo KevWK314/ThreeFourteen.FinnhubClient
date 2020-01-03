@@ -22,7 +22,7 @@ namespace ThreeFourteen.Finnhub.Client
         public Task<Symbol[]> GetSymbols(string exchange)
         {
             return _finnhubClient.SendAsync<Symbol[]>("forex/symbol", JsonDeserialiser.Default,
-                new Field("exchange", exchange));
+                new Field(FieldKeys.Exchange, exchange));
         }
 
         public async Task<Candle[]> GetCandles(string symbol, Resolution resolution, int count)

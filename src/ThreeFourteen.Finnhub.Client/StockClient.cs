@@ -62,6 +62,23 @@ namespace ThreeFourteen.Finnhub.Client
                 new Field(FieldKeys.Symbol, symbol));
         }
 
+        public Task<StockExchange[]> GetExchanges()
+        {
+            return _finnhubClient.SendAsync<StockExchange[]>("stock/exchange", JsonDeserialiser.Default);
+        }
+
+        public Task<Symbol[]> GetSymbols(string exchange)
+        {
+            return _finnhubClient.SendAsync<Symbol[]>("stock/symbol", JsonDeserialiser.Default,
+                new Field(FieldKeys.Exchange, exchange));
+        }
+
+        public Task<Quote> GetQuote(string symbol)
+        {
+            return _finnhubClient.SendAsync<Quote>("stock/quote", JsonDeserialiser.Default,
+                new Field(FieldKeys.Symbol, symbol));
+        }
+
         public async Task<Candle[]> GetCandles(string symbol, Resolution resolution, int count)
         {
             if (string.IsNullOrWhiteSpace(symbol)) throw new ArgumentException(nameof(symbol));

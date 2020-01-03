@@ -115,6 +115,66 @@ namespace ThreeFourteen.Finnhub.Client.Tests
         }
 
         [Fact]
+        public async Task Exchanges()
+        {
+            var httpClientTester = new HttpClientTester()
+                .SetResponseContent(DataLoader.LoadStock("exchanges"));
+
+            var client = new FinnhubClient(httpClientTester.Client, "APIKey");
+
+            var exchanges = await client.Stock.GetExchanges();
+
+            exchanges.Should().NotBeNull();
+            exchanges.Should().HaveCount(3);
+            exchanges[0].Code.Should().Be("US");
+            exchanges[0].Name.Should().Be("US exchanges");
+
+            httpClientTester.RequestMessage.RequestUri
+                .AbsoluteUri.Should().Be("https://finnhub.io/api/v1/stock/exchange?token=APIKey");
+        }
+
+        [Fact]
+        public async Task Symbols()
+        {
+            var httpClientTester = new HttpClientTester()
+                .SetResponseContent(DataLoader.LoadStock("symbols"));
+
+            var client = new FinnhubClient(httpClientTester.Client, "APIKey");
+
+            var symbols = await client.Stock.GetSymbols("US");
+
+            symbols.Should().NotBeNull();
+            symbols.Should().HaveCount(3);
+            symbols[2].Description.Should().Be("PERTH MINT PHYSICAL GOLD ETF");
+            symbols[2].DisplaySymbol.Should().Be("AAAU");
+            symbols[2].CandleSymbol.Should().Be("AAAU");
+
+            httpClientTester.RequestMessage.RequestUri
+                .AbsoluteUri.Should().Be("https://finnhub.io/api/v1/stock/symbol?token=APIKey&exchange=US");
+        }
+
+        [Fact]
+        public async Task Quote()
+        {
+            var httpClientTester = new HttpClientTester()
+                .SetResponseContent(DataLoader.LoadStock("quote"));
+
+            var client = new FinnhubClient(httpClientTester.Client, "APIKey");
+
+            var quote = await client.Stock.GetQuote("AAPL");
+
+            quote.Should().NotBeNull();
+            quote.Current.Should().Be(261.74m);
+            quote.High.Should().Be(263.31m);
+            quote.Low.Should().Be(260.68m);
+            quote.Open.Should().Be(261.07m);
+            quote.PreviousClose.Should().Be(259.45m);
+
+            httpClientTester.RequestMessage.RequestUri
+                .AbsoluteUri.Should().Be("https://finnhub.io/api/v1/stock/quote?token=APIKey&symbol=AAPL");
+        }
+
+        [Fact]
         public async Task Candles_WithCount()
         {
             var httpClientTester = new HttpClientTester()

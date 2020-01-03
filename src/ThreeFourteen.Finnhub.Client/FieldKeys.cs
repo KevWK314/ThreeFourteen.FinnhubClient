@@ -7,5 +7,6 @@
         public const string Count = "count";
         public const string From = "from";
         public const string To = "to";
+        public const string Exchange = "exchange";
     }
 }

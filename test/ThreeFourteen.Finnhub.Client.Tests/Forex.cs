@@ -35,11 +35,13 @@ namespace ThreeFourteen.Finnhub.Client.Tests
 
             var client = new FinnhubClient(httpClientTester.Client, "APIKey");
 
-            var exchanges = await client.Forex.GetSymbols("ic markets");
+            var symbols = await client.Forex.GetSymbols("ic markets");
 
-            exchanges.Should().NotBeNull();
-            exchanges.Should().HaveCount(3);
-            exchanges[0].Description.Should().Be("IC MARKETS Euro vs US Dollar EURUSD");
+            symbols.Should().NotBeNull();
+            symbols.Should().HaveCount(3);
+            symbols[0].Description.Should().Be("IC MARKETS Euro vs US Dollar EURUSD");
+            symbols[0].DisplaySymbol.Should().Be("EUR/USD");
+            symbols[0].CandleSymbol.Should().Be("IC MARKETS:1");
 
             httpClientTester.RequestMessage.RequestUri
                 .AbsoluteUri.Should().Be("https://finnhub.io/api/v1/forex/symbol?token=APIKey&exchange=ic+markets");

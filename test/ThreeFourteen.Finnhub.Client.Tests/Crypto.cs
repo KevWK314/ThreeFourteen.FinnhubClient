@@ -35,13 +35,13 @@ namespace ThreeFourteen.Finnhub.Client.Tests
 
             var client = new FinnhubClient(httpClientTester.Client, "APIKey");
 
-            var exchanges = await client.Crypto.GetSymbols("binance");
+            var symbols = await client.Crypto.GetSymbols("binance");
 
-            exchanges.Should().NotBeNull();
-            exchanges.Should().HaveCount(3);
-            exchanges[2].Description.Should().Be("Binance BNBBTC");
-            exchanges[2].DisplaySymbol.Should().Be("BNB/BTC");
-            exchanges[2].CandleSymbol.Should().Be("BINANCE:BNBBTC");
+            symbols.Should().NotBeNull();
+            symbols.Should().HaveCount(3);
+            symbols[2].Description.Should().Be("Binance BNBBTC");
+            symbols[2].DisplaySymbol.Should().Be("BNB/BTC");
+            symbols[2].CandleSymbol.Should().Be("BINANCE:BNBBTC");
 
             httpClientTester.RequestMessage.RequestUri
                 .AbsoluteUri.Should().Be("https://finnhub.io/api/v1/crypto/symbol?token=APIKey&exchange=binance");
