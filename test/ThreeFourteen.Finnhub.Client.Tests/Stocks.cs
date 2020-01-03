@@ -171,7 +171,7 @@ namespace ThreeFourteen.Finnhub.Client.Tests
             quote.PreviousClose.Should().Be(259.45m);
 
             httpClientTester.RequestMessage.RequestUri
-                .AbsoluteUri.Should().Be("https://finnhub.io/api/v1/stock/quote?token=APIKey&symbol=AAPL");
+                .AbsoluteUri.Should().Be("https://finnhub.io/api/v1/quote?token=APIKey&symbol=AAPL");
         }
 
         [Fact]

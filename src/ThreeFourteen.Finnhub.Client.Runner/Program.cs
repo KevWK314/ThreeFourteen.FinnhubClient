@@ -14,6 +14,7 @@ namespace ThreeFourteen.Finnhub.Client.Runner
             TryStocks(client).Wait();
             TryForex(client).Wait();
             TryCrypto(client).Wait();
+            TryTechnicalAnalysis(client).Wait();
 
             Console.WriteLine();
             Console.WriteLine("Done");
@@ -42,6 +43,15 @@ namespace ThreeFourteen.Finnhub.Client.Runner
             var earnings = await client.Stock.GetEarnings("AAPL");
             Console.WriteLine($"Success: Retrieved {earnings.Length} earnings entries.");
 
+            var exchanges = await client.Stock.GetExchanges();
+            Console.WriteLine($"Success: {exchanges.Length} stock exchanges found.");
+
+            var symbols = await client.Stock.GetSymbols("US");
+            Console.WriteLine($"Success: Stock exchange has {symbols.Length} symbols.");
+
+            var quote = await client.Stock.GetQuote("AAPL");
+            Console.WriteLine($"Success: Current AAPL quote price is {quote.Current}.");
+
             var candles = await client.Stock.GetCandles("AAPL", Model.Resolution.Day, 10);
             Console.WriteLine($"Success: Retrieved {candles.Length} candles.");
         }
@@ -69,11 +79,20 @@ namespace ThreeFourteen.Finnhub.Client.Runner
             var exchanges = await client.Crypto.GetExchanges();
             Console.WriteLine($"Success: {exchanges.Length} crypto exchanges found.");
 
-            var symbols = await client.Crypto.GetSymbols("fxcm");
+            var symbols = await client.Crypto.GetSymbols("Binance");
             Console.WriteLine($"Success: Crypto exchange has {symbols.Length} symbols.");
 
             var candles = await client.Crypto.GetCandles(symbols.First().CandleSymbol, Model.Resolution.Day, 10);
             Console.WriteLine($"Success: Retrieved {candles.Length} candles.");
+        }
+
+        static async Task TryTechnicalAnalysis(FinnhubClient client)
+        {
+            Console.WriteLine();
+            Console.WriteLine("Technical Analysis");
+
+            var supportResistance = await client.TechnicalAnalysis.GetSupportResistance("AAPL", Model.Resolution.Day);
+            Console.WriteLine($"Success: {supportResistance.Levels.Count} support/resistance levels.");
         }
     }
 }

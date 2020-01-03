@@ -75,7 +75,7 @@ namespace ThreeFourteen.Finnhub.Client
 
         public Task<Quote> GetQuote(string symbol)
         {
-            return _finnhubClient.SendAsync<Quote>("stock/quote", JsonDeserialiser.Default,
+            return _finnhubClient.SendAsync<Quote>("quote", JsonDeserialiser.Default,
                 new Field(FieldKeys.Symbol, symbol));
         }
 
