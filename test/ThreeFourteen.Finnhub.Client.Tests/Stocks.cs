@@ -126,7 +126,12 @@ namespace ThreeFourteen.Finnhub.Client.Tests
 
             candles.Should().NotBeNull();
             candles.Should().HaveCount(3);
+            candles[0].High.Should().Be(222.49m);
+            candles[0].Low.Should().Be(217.19m);
             candles[0].Open.Should().Be(221.03m);
+            candles[0].Close.Should().Be(217.68m);
+            candles[0].Volume.Should().Be(33463820);
+            candles[0].Timestamp.Should().Be(DateTime.Parse("2019-09-24 04:00:00"));
 
             httpClientTester.RequestMessage.RequestUri
                 .AbsoluteUri.Should().Be("https://finnhub.io/api/v1/stock/candle?token=APIKey&symbol=AAPL&resolution=5&count=3");
@@ -144,7 +149,12 @@ namespace ThreeFourteen.Finnhub.Client.Tests
 
             candles.Should().NotBeNull();
             candles.Should().HaveCount(3);
-            candles[0].Volume.Should().Be(33463820);
+            candles[2].High.Should().Be(220.94m);
+            candles[2].Low.Should().Be(218.83m);
+            candles[2].Open.Should().Be(220m);
+            candles[2].Close.Should().Be(219.89m);
+            candles[2].Volume.Should().Be(20730608);
+            candles[2].Timestamp.Should().Be(DateTime.Parse("2019-09-26 04:00:00"));
 
             httpClientTester.RequestMessage.RequestUri
                 .AbsoluteUri.Should().Be("https://finnhub.io/api/v1/stock/candle?token=APIKey&symbol=AAPL&resolution=5&from=1575158400&to=1575244800");
