@@ -118,7 +118,7 @@ namespace ThreeFourteen.Finnhub.Client.Tests
         public async Task Candles_WithCount()
         {
             var httpClientTester = new HttpClientTester()
-                .SetResponseContent(DataLoader.LoadStock("candle"));
+                .SetResponseContent(DataLoader.LoadStock("candles"));
 
             var client = new FinnhubClient(httpClientTester.Client, "APIKey");
 
@@ -136,7 +136,7 @@ namespace ThreeFourteen.Finnhub.Client.Tests
         public async Task Candles_WithRange()
         {
             var httpClientTester = new HttpClientTester()
-                .SetResponseContent(DataLoader.LoadStock("candle"));
+                .SetResponseContent(DataLoader.LoadStock("candles"));
 
             var client = new FinnhubClient(httpClientTester.Client, "APIKey");
 

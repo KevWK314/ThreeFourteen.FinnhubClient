@@ -1,0 +1,17 @@
+[
+  {
+    "description": "Binance ETHBTC",
+    "displaySymbol": "ETH/BTC",
+    "symbol": "ETHBTC"
+  },
+  {
+    "description": "Binance LTCBTC",
+    "displaySymbol": "LTC/BTC",
+    "symbol": "BINANCE:LTCBTC"
+  },
+  {
+    "description": "Binance BNBBTC",
+    "displaySymbol": "BNB/BTC",
+    "symbol": "BINANCE:BNBBTC"
+  }
+]

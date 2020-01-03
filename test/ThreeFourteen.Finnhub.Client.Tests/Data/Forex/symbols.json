@@ -1,0 +1,17 @@
+[
+  {
+    "description": "IC MARKETS Euro vs US Dollar EURUSD",
+    "displaySymbol": "EUR/USD",
+    "symbol": "IC MARKETS:1"
+  },
+  {
+    "description": "IC MARKETS Australian vs US Dollar AUDUSD",
+    "displaySymbol": "AUD/USD",
+    "symbol": "IC MARKETS:5"
+  },
+  {
+    "description": "IC MARKETS British Pound vs US Dollar GBPUSD",
+    "displaySymbol": "GBP/USD",
+    "symbol": "IC MARKETS:2"
+  }
+]

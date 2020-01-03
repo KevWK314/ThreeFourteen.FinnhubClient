@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using ThreeFourteen.Finnhub.Client.Serialisation;
@@ -66,9 +67,11 @@ namespace ThreeFourteen.Finnhub.Client
         {
             if (string.IsNullOrEmpty(_config.ApiKey)) throw new InvalidOperationException("ApiKey not set");
 
-            var parameters = string.Join("&", fields.Select(f => $"{f.Key}={f.Value}"));
+            var parameters = string.Join("&", fields.Select(f => $"{f.Key}={WebUtility.UrlEncode(f.Value)}"));
+            parameters = string.IsNullOrEmpty(parameters) ?
+                string.Empty : "&" + parameters;
 
-            return $"token={_config.ApiKey}&{parameters}";
+            return $"token={_config.ApiKey}{parameters}";
         }
     }
 }
