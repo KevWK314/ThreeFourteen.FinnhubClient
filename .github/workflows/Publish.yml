@@ -24,6 +24,6 @@ jobs:
     - name: Check Version
       run: echo ${{ steps.tagName.outputs.tag }}
     - name: Pack
-      run: dotnet pack ./ThreeFourteen.Finnhub.Client.sln --configuration Release -o ./NuGetPackages /p:Version=${{ steps.tagName.outputs.tag }}
+      run: dotnet pack ./ThreeFourteen.Finnhub.Client.sln --configuration Release -o NuGetPackages /p:Version=${{ steps.tagName.outputs.tag }}
     - name: Publish
-      run: dotnet nuget push ./src/ThreeFourteen.Finnhub.Client/NuGetPackages/* -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json
+      run: dotnet nuget push NuGetPackages/* -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json
