@@ -19,7 +19,10 @@ jobs:
       run: dotnet build --configuration Release
     - name: Test
       run: dotnet test
+    - name: Get Version
+      id: get_version
+      run: echo ::set-output name=VERSION::${GITHUB_REF#refs/tags/}  
     - name: Pack
-      run: dotnet pack ./ThreeFourteen.Finnhub.Client.sln --configuration Release -o ./NuGetPackages /p:Version=${GITHUB_REF#refs/tags/}
+      run: dotnet pack ./ThreeFourteen.Finnhub.Client.sln --configuration Release -o ./NuGetPackages /p:Version=${{steps.get_version.outputs.VERSION}}
     - name: Publish
       run: dotnet nuget push ./src/ThreeFourteen.Finnhub.Client/NuGetPackages/* -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json
