@@ -15,6 +15,7 @@ namespace ThreeFourteen.Finnhub.Client.Runner
             TryForex(client).Wait();
             TryCrypto(client).Wait();
             TryTechnicalAnalysis(client).Wait();
+            TryGetRawData(client).Wait();
 
             Console.WriteLine();
             Console.WriteLine("Done");
@@ -93,6 +94,15 @@ namespace ThreeFourteen.Finnhub.Client.Runner
 
             var supportResistance = await client.TechnicalAnalysis.GetSupportResistance("AAPL", Model.Resolution.Day);
             Console.WriteLine($"Success: {supportResistance.Levels.Count} support/resistance levels.");
+        }
+
+        static async Task TryGetRawData(FinnhubClient client)
+        {
+            Console.WriteLine();
+            Console.WriteLine("Raw Data");
+
+            var rawData = await client.GetRawDataAsync("stock/profile", new Field(FieldKeys.Symbol, "AAPL"));
+            Console.WriteLine($"Success: Raw data has {rawData.Length} characters.");
         }
     }
 }

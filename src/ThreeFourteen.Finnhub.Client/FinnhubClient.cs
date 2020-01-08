@@ -48,7 +48,17 @@ namespace ThreeFourteen.Finnhub.Client
             configure?.Invoke(_config);
         }
 
-        internal async Task<T> SendAsync<T>(string operation, IDeserialiser deserialiser, params Field[] fields)
+        public Task<string> GetRawDataAsync(string operation, params Field[] fields)
+        {
+            return SendAsync(operation, fields, content => content.ReadAsStringAsync());
+        }
+
+        internal Task<T> SendAsync<T>(string operation, IDeserialiser deserialiser, params Field[] fields)
+        {
+            return SendAsync(operation, fields, deserialiser.Deserialize<T>);
+        }
+
+        private async Task<T> SendAsync<T>(string operation, Field[] fields, Func<HttpContent, Task<T>> deserialise)
         {
             var parameters = CreateParameters(fields);
 
@@ -59,7 +69,7 @@ namespace ThreeFourteen.Finnhub.Client
                 if (!responseMessage.IsSuccessStatusCode)
                     throw new FinnhubException((int)responseMessage.StatusCode, responseMessage.ReasonPhrase);
 
-                return await deserialiser.Deserialize<T>(responseMessage.Content);
+                return await deserialise(responseMessage.Content);
             }
         }
 
