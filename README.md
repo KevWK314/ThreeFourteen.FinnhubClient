@@ -1,4 +1,6 @@
-# ThreeFourteen Finnhub
+![](https://github.com/KevWK314/ThreeFourteen.FinnhubClient/workflows/BuildAndTest/badge.svg)
+
+# ThreeFourteen Finnhub Client
 
 A client that can be used to access Finnhub Market Data.
 
