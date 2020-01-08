@@ -19,6 +19,8 @@ jobs:
       run: dotnet build --configuration Release
     - name: Test
       run: dotnet test
+    - name: Get Github ref
+      run: echo ${GITHUB_REF}
     - name: Get Version
       run: echo ::set-env name=RELEASE_VERSION::$(echo ${GITHUB_REF:10})
     - name: Pack
