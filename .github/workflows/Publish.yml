@@ -10,6 +10,8 @@ jobs:
     runs-on: windows-latest
 
     steps:
+    - uses: olegtarasov/get-tag@v1
+      id: tagName
     - uses: actions/checkout@v1
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
@@ -20,9 +22,9 @@ jobs:
     - name: Test
       run: dotnet test
     - name: Get Github ref
-      run: echo ${GITHUB_REF}
+      run: echo ${{ steps.tagName.outputs.tag }} $GITHUB_TAG_NAME  ${{ GITHUB_REF:10 }}
     - name: Get Version
-      run: echo ::set-env name=RELEASE_VERSION::$(echo ${GITHUB_REF:10})
+      run: echo ::set-env name=RELEASE_VERSION::$(echo ${{ GITHUB_REF:10 }})
     - name: Pack
       run: dotnet pack ./ThreeFourteen.Finnhub.Client.sln --configuration Release -o ./NuGetPackages /p:Version=$RELEASE_VERSION
     - name: Publish
