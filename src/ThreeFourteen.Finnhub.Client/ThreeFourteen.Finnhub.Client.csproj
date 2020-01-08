@@ -3,19 +3,24 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
 
-    <packageId>ThreeFourteen.Finnhub.Client</packageId>
-    <description>Implementation of the Finnhub API</description>
-    <title>Finnhub Client</title>
-    <authors>Kevin Kavanagh</authors>
-    <packageLicenseUrl>https://www.apache.org/licenses/LICENSE-2.0</packageLicenseUrl>
-    <packageProjectUrl>https://github.com/KevWK314/ThreeFourteen.FluentHttpClient</packageProjectUrl>
-    <packageRequireLicenseAcceptance>false</packageRequireLicenseAcceptance>
-    <packageTags>finnhub marketdata finance</packageTags>
-    <packageIconUrl>https://avatars1.githubusercontent.com/u/1942263</packageIconUrl>
+    <PackageId>ThreeFourteen.Finnhub.Client</PackageId>
+    <Description>Implementation of the Finnhub API</Description>
+    <Title>Finnhub Client</Title>
+    <Authors>Kevin Kavanagh</Authors>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/KevWK314/ThreeFourteen.FluentHttpClient</PackageProjectUrl>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageTags>finnhub marketdata finance</PackageTags>
+    <PackageIcon>icon.jpg</PackageIcon>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="icon.jpg" Pack="true" PackagePath="\"/>
+    <None Include="..\..\LICENSE" Pack="true" PackagePath="LICENSE" />
   </ItemGroup>
 
 </Project>
