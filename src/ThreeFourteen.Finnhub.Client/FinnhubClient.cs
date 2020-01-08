@@ -12,10 +12,6 @@ namespace ThreeFourteen.Finnhub.Client
         private readonly HttpClient _httpClient;
         private readonly FinnhubConfig _config = new FinnhubConfig();
 
-        public FinnhubClient()
-        {
-        }
-
         public FinnhubClient(string apiKey)
             : this(new HttpClient(), apiKey)
         {

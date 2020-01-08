@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
+using ThreeFourteen.Finnhub.Client.Model;
 
 namespace ThreeFourteen.Finnhub.Client.Runner
 {
@@ -53,7 +55,7 @@ namespace ThreeFourteen.Finnhub.Client.Runner
             var quote = await client.Stock.GetQuote("AAPL");
             Console.WriteLine($"Success: Current AAPL quote price is {quote.Current}.");
 
-            var candles = await client.Stock.GetCandles("AAPL", Model.Resolution.Day, 10);
+            var candles = await client.Stock.GetCandles("AAPL", Resolution.Day, 10);
             Console.WriteLine($"Success: Retrieved {candles.Length} candles.");
         }
 
@@ -68,7 +70,7 @@ namespace ThreeFourteen.Finnhub.Client.Runner
             var symbols = await client.Forex.GetSymbols("fxcm");
             Console.WriteLine($"Success: Forex exchange has {symbols.Length} symbols.");
 
-            var candles = await client.Forex.GetCandles(symbols.First().CandleSymbol, Model.Resolution.Day, 10);
+            var candles = await client.Forex.GetCandles(symbols.First().CandleSymbol, Resolution.Day, 10);
             Console.WriteLine($"Success: Retrieved {candles.Length} candles.");
         }
 
@@ -83,7 +85,7 @@ namespace ThreeFourteen.Finnhub.Client.Runner
             var symbols = await client.Crypto.GetSymbols("Binance");
             Console.WriteLine($"Success: Crypto exchange has {symbols.Length} symbols.");
 
-            var candles = await client.Crypto.GetCandles(symbols.First().CandleSymbol, Model.Resolution.Day, 10);
+            var candles = await client.Crypto.GetCandles(symbols.First().CandleSymbol, Resolution.Day, 10);
             Console.WriteLine($"Success: Retrieved {candles.Length} candles.");
         }
 
@@ -92,7 +94,7 @@ namespace ThreeFourteen.Finnhub.Client.Runner
             Console.WriteLine();
             Console.WriteLine("Technical Analysis");
 
-            var supportResistance = await client.TechnicalAnalysis.GetSupportResistance("AAPL", Model.Resolution.Day);
+            var supportResistance = await client.TechnicalAnalysis.GetSupportResistance("AAPL", Resolution.Day);
             Console.WriteLine($"Success: {supportResistance.Levels.Count} support/resistance levels.");
         }
 
