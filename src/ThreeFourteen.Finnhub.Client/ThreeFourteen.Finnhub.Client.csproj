@@ -5,10 +5,10 @@
 
     <PackageId>ThreeFourteen.Finnhub.Client</PackageId>
     <Description>Implementation of the Finnhub API</Description>
-    <Title>Finnhub Client</Title>
+    <Title>Finnhub.Client</Title>
     <Authors>Kevin Kavanagh</Authors>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/KevWK314/ThreeFourteen.FluentHttpClient</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/KevWK314/ThreeFourteen.FinnhubClient</PackageProjectUrl>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageTags>finnhub marketdata finance</PackageTags>
     <PackageIcon>icon.jpg</PackageIcon>
