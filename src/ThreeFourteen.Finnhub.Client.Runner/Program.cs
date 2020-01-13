@@ -10,14 +10,19 @@ namespace ThreeFourteen.Finnhub.Client.Runner
     {
         static void Main(string[] args)
         {
+            Run().GetAwaiter().GetResult();
+        }
+
+        static async Task Run()
+        {
             var apiKey = Environment.GetEnvironmentVariable("FinnhubApiKey", EnvironmentVariableTarget.User);
             var client = new FinnhubClient(apiKey);
 
-            TryStocks(client).Wait();
-            TryForex(client).Wait();
-            TryCrypto(client).Wait();
-            TryTechnicalAnalysis(client).Wait();
-            TryGetRawData(client).Wait();
+            await TryStocks(client);
+            await TryForex(client);
+            await TryCrypto(client);
+            await TryTechnicalAnalysis(client);
+            await TryGetRawData(client);
 
             Console.WriteLine();
             Console.WriteLine("Done");

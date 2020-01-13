@@ -60,12 +60,12 @@ namespace ThreeFourteen.Finnhub.Client
 
             var uri = new Uri(_config.BaseUri, $"/api/v1/{operation}?{parameters}");
 
-            using (var responseMessage = await _httpClient.GetAsync(uri))
+            using (var responseMessage = await _httpClient.GetAsync(uri).ConfigureAwait(false))
             {
                 if (!responseMessage.IsSuccessStatusCode)
                     throw new FinnhubException((int)responseMessage.StatusCode, responseMessage.ReasonPhrase);
 
-                return await deserialise(responseMessage.Content);
+                return await deserialise(responseMessage.Content).ConfigureAwait(false);
             }
         }
 

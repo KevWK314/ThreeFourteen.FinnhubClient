@@ -13,7 +13,7 @@ namespace ThreeFourteen.Finnhub.Client.Serialisation
 
         public virtual async Task<TResponse> Deserialize<TResponse>(HttpContent responseContent)
         {
-            using (var contentStream = await responseContent.ReadAsStreamAsync())
+            using (var contentStream = await responseContent.ReadAsStreamAsync().ConfigureAwait(false))
             using (var streamReader = new StreamReader(contentStream))
             {
                 using (JsonReader reader = new JsonTextReader(streamReader))

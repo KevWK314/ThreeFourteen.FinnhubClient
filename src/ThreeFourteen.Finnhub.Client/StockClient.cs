@@ -86,7 +86,8 @@ namespace ThreeFourteen.Finnhub.Client
             var data = await _finnhubClient.SendAsync<CandleData>("stock/candle", JsonDeserialiser.Default,
                 new Field(FieldKeys.Symbol, symbol),
                 new Field(FieldKeys.Resolution, resolution.GetFieldValue()),
-                new Field(FieldKeys.Count, count.ToString()));
+                new Field(FieldKeys.Count, count.ToString()))
+                .ConfigureAwait(false);
 
             return data.Map();
         }
@@ -104,7 +105,8 @@ namespace ThreeFourteen.Finnhub.Client
                 new Field(FieldKeys.Symbol, symbol),
                 new Field(FieldKeys.Resolution, resolution.GetFieldValue()),
                 new Field(FieldKeys.From, new DateTimeOffset(from).ToUnixTimeSeconds().ToString()),
-                new Field(FieldKeys.To, new DateTimeOffset(to).ToUnixTimeSeconds().ToString()));
+                new Field(FieldKeys.To, new DateTimeOffset(to).ToUnixTimeSeconds().ToString()))
+                .ConfigureAwait(false);
 
             return data.Map();
         }
