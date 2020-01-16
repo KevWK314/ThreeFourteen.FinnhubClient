@@ -41,5 +41,14 @@ namespace ThreeFourteen.Finnhub.Client.Tests.Tools
 
             return File.ReadAllText(file);
         }
+
+        public static string LoadAlternativeData(string name)
+        {
+            var file = Path.Combine(Root, $@"Data\AlternativeData\{name}.json");
+            if (!File.Exists(file))
+                throw new FileNotFoundException($"Can't find alternative data file {name}.json");
+
+            return File.ReadAllText(file);
+        }
     }
 }

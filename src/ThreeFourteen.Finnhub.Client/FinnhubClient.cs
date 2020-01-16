@@ -29,6 +29,7 @@ namespace ThreeFourteen.Finnhub.Client
             Forex = new ForexClient(this);
             Crypto = new CryptoClient(this);
             TechnicalAnalysis = new TechnicalAnalysisClient(this);
+            AlternativeData = new AlternativeDataClient(this);
         }
 
         public StockClient Stock { get; }
@@ -38,6 +39,8 @@ namespace ThreeFourteen.Finnhub.Client
         public CryptoClient Crypto { get; }
 
         public TechnicalAnalysisClient TechnicalAnalysis { get; }
+
+        public AlternativeDataClient AlternativeData { get; }
 
         public void ConfigureClient(Action<FinnhubConfig> configure)
         {

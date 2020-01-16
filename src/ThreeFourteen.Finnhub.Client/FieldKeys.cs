@@ -8,5 +8,7 @@
         public const string From = "from";
         public const string To = "to";
         public const string Exchange = "exchange";
+        public const string Category = "category";
+        public const string MinId = "minId";
     }
 }
