@@ -113,6 +113,9 @@ namespace ThreeFourteen.Finnhub.Client.Runner
 
             var appleNews = await client.AlternativeData.GetCompanyNews("AAPL");
             Console.WriteLine($"Success: {appleNews.Length} Company news stories.");
+
+            var newsSentiment = await client.AlternativeData.GetNewsSentiment("AAPL");
+            Console.WriteLine($"Success: News sentiment score is {newsSentiment.CompanyNewsScore}.");
         }
 
         static async Task TryGetRawData(FinnhubClient client)

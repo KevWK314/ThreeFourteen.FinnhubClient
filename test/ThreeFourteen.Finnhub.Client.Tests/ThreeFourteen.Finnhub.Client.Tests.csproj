@@ -19,6 +19,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="Data\AlternativeData\newsSentiment.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Data\AlternativeData\news.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

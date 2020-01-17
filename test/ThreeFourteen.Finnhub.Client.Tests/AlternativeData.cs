@@ -73,5 +73,30 @@ namespace ThreeFourteen.Finnhub.Client.Tests
             httpClientTester.RequestMessage.RequestUri
                 .AbsoluteUri.Should().Be("https://finnhub.io/api/v1/news/AAPL?token=APIKey");
         }
+
+        [Fact]
+        public async Task GetNewsSentiment()
+        {
+            var httpClientTester = new HttpClientTester()
+                .SetResponseContent(DataLoader.LoadAlternativeData("newsSentiment"));
+
+            var client = new FinnhubClient(httpClientTester.Client, "APIKey");
+
+            var newsSentiment = await client.AlternativeData.GetNewsSentiment("V");
+
+            newsSentiment.Should().NotBeNull();
+            newsSentiment.Symbol.Should().Be("V");
+            newsSentiment.CompanyNewsScore.Should().Be(0.9166);
+            newsSentiment.SectorAverageNewsScore.Should().Be(0.5191);
+            newsSentiment.SectorAverageBullishPercent.Should().Be(0.6482);
+            newsSentiment.Buzz.ArticlesInLastWeek.Should().Be(20);
+            newsSentiment.Buzz.Buzz.Should().Be(0.8888);
+            newsSentiment.Buzz.WeeklyAverage.Should().Be(22.5);
+            newsSentiment.Sentiment.BullishPercent.Should().Be(1);
+            newsSentiment.Sentiment.BearishPercent.Should().Be(0);
+
+            httpClientTester.RequestMessage.RequestUri
+                .AbsoluteUri.Should().Be("https://finnhub.io/api/v1/news-sentiment?token=APIKey&symbol=V");
+        }
     }
 }

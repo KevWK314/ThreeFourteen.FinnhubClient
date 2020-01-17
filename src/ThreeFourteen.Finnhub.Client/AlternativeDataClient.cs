@@ -29,11 +29,19 @@ namespace ThreeFourteen.Finnhub.Client
                 new Field(FieldKeys.MinId, minId.ToString()));
         }
 
-        public Task<NewsEntry[]> GetCompanyNews(string companySymbol)
+        public Task<NewsEntry[]> GetCompanyNews(string symbol)
         {
-            if (string.IsNullOrEmpty(companySymbol)) throw new ArgumentException(nameof(companySymbol));
+            if (string.IsNullOrEmpty(symbol)) throw new ArgumentException(nameof(symbol));
 
-            return _finnhubClient.SendAsync<NewsEntry[]>($"news/{companySymbol}", JsonDeserialiser.Default);
+            return _finnhubClient.SendAsync<NewsEntry[]>($"news/{symbol}", JsonDeserialiser.Default);
+        }
+
+        public Task<NewsSentiment> GetNewsSentiment(string symbol)
+        {
+            if (string.IsNullOrEmpty(symbol)) throw new ArgumentException(nameof(symbol));
+
+            return _finnhubClient.SendAsync<NewsSentiment>($"news-sentiment", JsonDeserialiser.Default,
+                new Field(FieldKeys.Symbol, symbol));
         }
     }
 }
