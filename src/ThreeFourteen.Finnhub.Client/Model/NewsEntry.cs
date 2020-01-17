@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using System;
 
 namespace ThreeFourteen.Finnhub.Client.Model
@@ -9,7 +10,8 @@ namespace ThreeFourteen.Finnhub.Client.Model
         public string Category { get; set; }
 
         [JsonProperty("datetime")]
-        public long Datetime { get; set; }
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        public DateTime Datetime { get; set; }
 
         [JsonProperty("headline")]
         public string Headline { get; set; }

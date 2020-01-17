@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Linq;
-using System.Net.Http;
 using System.Threading.Tasks;
 using ThreeFourteen.Finnhub.Client.Model;
 
@@ -22,6 +21,7 @@ namespace ThreeFourteen.Finnhub.Client.Runner
             await TryForex(client);
             await TryCrypto(client);
             await TryTechnicalAnalysis(client);
+            await TryAlternativeData(client);
             await TryGetRawData(client);
 
             Console.WriteLine();
@@ -101,6 +101,18 @@ namespace ThreeFourteen.Finnhub.Client.Runner
 
             var supportResistance = await client.TechnicalAnalysis.GetSupportResistance("AAPL", Resolution.Day);
             Console.WriteLine($"Success: {supportResistance.Levels.Count} support/resistance levels.");
+        }
+
+        static async Task TryAlternativeData(FinnhubClient client)
+        {
+            Console.WriteLine();
+            Console.WriteLine("Alternative Data");
+
+            var news = await client.AlternativeData.GetNews(NewsCategory.Forex);
+            Console.WriteLine($"Success: {news.Length} Forex news stories.");
+
+            var appleNews = await client.AlternativeData.GetCompanyNews("AAPL");
+            Console.WriteLine($"Success: {news.Length} Company news stories.");
         }
 
         static async Task TryGetRawData(FinnhubClient client)

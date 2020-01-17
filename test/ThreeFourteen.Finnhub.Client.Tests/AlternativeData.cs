@@ -1,7 +1,5 @@
 ﻿using FluentAssertions;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using ThreeFourteen.Finnhub.Client.Model;
 using ThreeFourteen.Finnhub.Client.Tests.Tools;
@@ -23,7 +21,7 @@ namespace ThreeFourteen.Finnhub.Client.Tests
 
             news.Should().HaveCount(3);
             news[0].Category.Should().Be("technology");
-            // TBD datetime
+            news[0].Datetime.Should().Be(DateTime.Parse("2019-08-29 04:48:35"));
             news[0].Headline.Should().Be("Facebook acknowledges flaw in Messenger Kids app");
             news[0].Id.Should().Be(25040);
             news[0].Image.Should().Be("https://s3.reutersmedia.net/resources/r/?m=02\u0026d=20190829\u0026t=2\u0026i=1423882334\u0026w=1200\u0026r=LYNXNPEF7S07O");
@@ -47,7 +45,7 @@ namespace ThreeFourteen.Finnhub.Client.Tests
 
             news.Should().HaveCount(3);
             news[2].Category.Should().Be("company news");
-            // TBD datetime
+            news[2].Datetime.Should().Be(DateTime.Parse("2019-08-29 04:42:15"));
             news[2].Headline.Should().Be("GLOBAL MARKETS-Bonds reign supreme, equities struggle on recession, Brexit fears");
             news[2].Id.Should().Be(24876);
             news[2].Image.Should().Be("https://s4.reutersmedia.net/resources_v2/images/rcom-default.png");

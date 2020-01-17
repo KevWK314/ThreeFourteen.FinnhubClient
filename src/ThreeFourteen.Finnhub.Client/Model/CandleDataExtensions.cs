@@ -7,6 +7,7 @@ namespace ThreeFourteen.Finnhub.Client.Model
     public static class CandleDataExtensions
     {
         private const string NoData = "no_data";
+
         public static Candle[] Map(this CandleData candleData)
         {
             try
@@ -33,7 +34,7 @@ namespace ThreeFourteen.Finnhub.Client.Model
                     Open = candleData.Open[i],
                     Close = candleData.Close[i],
                     Volume = candleData.Volume?[i] ?? 0,
-                    Timestamp = DateTimeOffset.FromUnixTimeSeconds(candleData.Timestamp[i]).UtcDateTime
+                    Timestamp = candleData.Timestamp[i]
                 };
             }
         }

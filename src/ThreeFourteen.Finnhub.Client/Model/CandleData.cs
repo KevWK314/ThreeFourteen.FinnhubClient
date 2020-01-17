@@ -1,4 +1,6 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using System;
 using System.Collections.Generic;
 
 namespace ThreeFourteen.Finnhub.Client.Model
@@ -21,8 +23,8 @@ namespace ThreeFourteen.Finnhub.Client.Model
         [JsonProperty("s")]
         public string Status { get; set; }
 
-        [JsonProperty("t")]
-        public List<long> Timestamp { get; set; }
+        [JsonProperty("t", ItemConverterType = typeof(UnixDateTimeConverter))]
+        public List<DateTime> Timestamp { get; set; }
 
         [JsonProperty("v")]
         public List<long> Volume { get; set; }
