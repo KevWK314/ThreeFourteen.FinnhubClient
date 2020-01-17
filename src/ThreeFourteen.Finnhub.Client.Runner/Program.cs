@@ -112,7 +112,7 @@ namespace ThreeFourteen.Finnhub.Client.Runner
             Console.WriteLine($"Success: {news.Length} Forex news stories.");
 
             var appleNews = await client.AlternativeData.GetCompanyNews("AAPL");
-            Console.WriteLine($"Success: {news.Length} Company news stories.");
+            Console.WriteLine($"Success: {appleNews.Length} Company news stories.");
         }
 
         static async Task TryGetRawData(FinnhubClient client)
