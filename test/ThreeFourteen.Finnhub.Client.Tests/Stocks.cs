@@ -205,7 +205,7 @@ namespace ThreeFourteen.Finnhub.Client.Tests
 
             var client = new FinnhubClient(httpClientTester.Client, "APIKey");
 
-            var candles = await client.Stock.GetCandles("AAPL", Resolution.FiveMinutes, DateTime.Parse("2019/12/1"), DateTime.Parse("2019/12/2"));
+            var candles = await client.Stock.GetCandles("AAPL", Resolution.FiveMinutes, new DateTimeOffset(2019, 12, 1, 0, 0, 0, TimeSpan.Zero).UtcDateTime, new DateTimeOffset(2019, 12, 2, 0, 0, 0, TimeSpan.Zero).UtcDateTime);
 
             candles.Should().NotBeNull();
             candles.Should().HaveCount(3);
