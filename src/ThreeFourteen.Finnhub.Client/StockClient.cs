@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using ThreeFourteen.Finnhub.Client.Model;
 using ThreeFourteen.Finnhub.Client.Serialisation;
@@ -109,6 +110,23 @@ namespace ThreeFourteen.Finnhub.Client
                 .ConfigureAwait(false);
 
             return data.Map();
+        }
+
+        public async Task<List<Dividend>> GetDividends(string symbol, DateTime from)
+        {
+            return await this.GetDividends(symbol, from, DateTime.UtcNow);
+        }
+
+        public async Task<List<Dividend>> GetDividends(string symbol, DateTime from, DateTime to)
+        {
+            if (string.IsNullOrWhiteSpace(symbol)) throw new ArgumentException(nameof(symbol));
+
+            return await _finnhubClient.SendAsync<List<Dividend>>("stock/dividend", JsonDeserialiser.Default,
+                    new Field(FieldKeys.Symbol, symbol),
+                    new Field(FieldKeys.From, from.ToString("yyyy-MM-dd")),
+                    new Field(FieldKeys.To, to.ToString("yyyy-MM-dd"))
+                    ).ConfigureAwait(false);
+
         }
     }
 }
