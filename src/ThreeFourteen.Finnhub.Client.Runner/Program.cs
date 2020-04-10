@@ -33,6 +33,9 @@ namespace ThreeFourteen.Finnhub.Client.Runner
         {
             Console.WriteLine("Stock");
 
+            var dividends = await client.Stock.GetDividend("AAPL", DateTime.Today.AddDays(-365), DateTime.Today);
+            Console.WriteLine($"Success: Retrieved {dividends.Count} dividends.");
+
             var company = await client.Stock.GetCompany("AAPL");
             Console.WriteLine($"Success: Retrieved company {company.Name}.");
 
