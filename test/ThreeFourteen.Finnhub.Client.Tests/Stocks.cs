@@ -219,5 +219,26 @@ namespace ThreeFourteen.Finnhub.Client.Tests
             httpClientTester.RequestMessage.RequestUri
                 .AbsoluteUri.Should().Be("https://finnhub.io/api/v1/stock/candle?token=APIKey&symbol=AAPL&resolution=5&from=1575158400&to=1575244800");
         }
+
+        
+        [Fact]
+        public async Task GetDividends_AAPL2019_ReturnsListOfDividends()
+        {
+            var httpClientTester = new HttpClientTester()
+                .SetResponseContent(DataLoader.LoadStock("dividends"));
+
+            var client = new FinnhubClient(httpClientTester.Client, "APIKey");
+
+            var dividends = await client.Stock.GetDividends("AAPL", DateTime.Parse("2019/01/1"), DateTime.Parse("2019/12/31"));
+
+            dividends.Should().NotBeNull();
+            dividends.Should().HaveCount(4);
+            dividends[0].Symbol.Should().Be("AAPL");
+            dividends[0].Amount.Should().Be(0.77);
+            dividends[0].Date.Should().Be(DateTime.Parse("2019-11-07"));
+
+            httpClientTester.RequestMessage.RequestUri
+                .AbsoluteUri.Should().Be("https://finnhub.io/api/v1/stock/dividend?token=APIKey&symbol=AAPL&from=2019-01-01&to=2019-12-31");
+        }
     }
 }
