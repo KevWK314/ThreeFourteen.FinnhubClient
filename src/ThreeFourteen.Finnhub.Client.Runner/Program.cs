@@ -36,6 +36,12 @@ namespace ThreeFourteen.Finnhub.Client.Runner
             var company = await client.Stock.GetCompany("AAPL");
             Console.WriteLine($"Success: Retrieved company {company.Name}.");
 
+            var company2 = await client.Stock.GetCompanyByIsin("US0378331005"); // AAPL
+            Console.WriteLine($"Success: Retrieved company {company.Name}.");
+
+            var company3 = await client.Stock.GetCompanyByCusip("037833100"); // AAPL
+            Console.WriteLine($"Success: Retrieved company {company.Name}.");
+
             var compensation = await client.Stock.GetCompensation("AAPL");
             Console.WriteLine($"Success: Retrieved compensation for {compensation.Name} ({compensation.CompanyName}).");
 

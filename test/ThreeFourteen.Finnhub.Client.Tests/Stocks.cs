@@ -27,6 +27,40 @@ namespace ThreeFourteen.Finnhub.Client.Tests
         }
 
         [Fact]
+        public async Task CompanyByIsin()
+        {
+            var httpClientTester = new HttpClientTester()
+                .SetResponseContent(DataLoader.LoadStock("company"));
+
+            var client = new FinnhubClient(httpClientTester.Client, "APIKey");
+
+            var company = await client.Stock.GetCompanyByIsin("US0378331005");
+
+            company.Should().NotBeNull();
+            company.Address.Should().Be("One Apple Park Way");
+
+            httpClientTester.RequestMessage.RequestUri
+                .AbsoluteUri.Should().Be("https://finnhub.io/api/v1/stock/profile?token=APIKey&isin=US0378331005");
+        }
+
+        [Fact]
+        public async Task CompanyByCusip()
+        {
+            var httpClientTester = new HttpClientTester()
+                .SetResponseContent(DataLoader.LoadStock("company"));
+
+            var client = new FinnhubClient(httpClientTester.Client, "APIKey");
+
+            var company = await client.Stock.GetCompanyByCusip("037833100");
+
+            company.Should().NotBeNull();
+            company.Address.Should().Be("One Apple Park Way");
+
+            httpClientTester.RequestMessage.RequestUri
+                .AbsoluteUri.Should().Be("https://finnhub.io/api/v1/stock/profile?token=APIKey&cusip=037833100");
+        }
+
+        [Fact]
         public async Task Compensation()
         {
             var httpClientTester = new HttpClientTester()
@@ -205,7 +239,7 @@ namespace ThreeFourteen.Finnhub.Client.Tests
 
             var client = new FinnhubClient(httpClientTester.Client, "APIKey");
 
-            var candles = await client.Stock.GetCandles("AAPL", Resolution.FiveMinutes, DateTime.Parse("2019/12/1"), DateTime.Parse("2019/12/2"));
+            var candles = await client.Stock.GetCandles("AAPL", Resolution.FiveMinutes, new DateTimeOffset(2019, 12, 1, 0, 0, 0, TimeSpan.Zero).UtcDateTime, new DateTimeOffset(2019, 12, 2, 0, 0, 0, TimeSpan.Zero).UtcDateTime);
 
             candles.Should().NotBeNull();
             candles.Should().HaveCount(3);

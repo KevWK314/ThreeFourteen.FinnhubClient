@@ -10,5 +10,7 @@
         public const string Exchange = "exchange";
         public const string Category = "category";
         public const string MinId = "minId";
+        public const string Isin = "isin";
+        public const string Cusip = "cusip";
     }
 }
