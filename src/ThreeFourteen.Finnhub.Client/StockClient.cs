@@ -38,6 +38,30 @@ namespace ThreeFourteen.Finnhub.Client
                 new Field(FieldKeys.Cusip, cusip));
         }
 
+        public Task<Company2> GetCompany2(string symbol)
+        {
+            if (string.IsNullOrWhiteSpace(symbol)) throw new ArgumentException(nameof(symbol));
+
+            return _finnhubClient.SendAsync<Company2>("stock/profile2", JsonDeserialiser.Default,
+                new Field(FieldKeys.Symbol, symbol));
+        }
+
+        public Task<Company2> GetCompany2ByIsin(string isin)
+        {
+            if (string.IsNullOrWhiteSpace(isin)) throw new ArgumentException(nameof(isin));
+
+            return _finnhubClient.SendAsync<Company2>("stock/profile2", JsonDeserialiser.Default,
+                new Field(FieldKeys.Isin, isin));
+        }
+
+        public Task<Company2> GetCompany2ByCusip(string cusip)
+        {
+            if (string.IsNullOrWhiteSpace(cusip)) throw new ArgumentException(nameof(cusip));
+
+            return _finnhubClient.SendAsync<Company2>("stock/profile2", JsonDeserialiser.Default,
+                new Field(FieldKeys.Cusip, cusip));
+        }
+
         public Task<Compensation> GetCompensation(string symbol)
         {
             if (string.IsNullOrWhiteSpace(symbol)) throw new ArgumentException(nameof(symbol));
